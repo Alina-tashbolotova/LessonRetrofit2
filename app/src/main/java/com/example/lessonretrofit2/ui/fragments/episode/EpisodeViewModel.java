@@ -19,7 +19,9 @@ public class EpisodeViewModel extends BaseViewModel {
         App.episodeApiService.fetchEpisode().enqueue(new Callback<RickAndMortyResponse<EpisodeModel>>() {
             @Override
             public void onResponse(Call<RickAndMortyResponse<EpisodeModel>> call, Response<RickAndMortyResponse<EpisodeModel>> response) {
-                data.setValue(response.body());
+                if (response.body() != null) {
+                    data.setValue(response.body());
+                }
             }
 
             @Override

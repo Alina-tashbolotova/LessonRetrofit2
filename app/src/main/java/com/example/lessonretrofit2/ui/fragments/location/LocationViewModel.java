@@ -19,7 +19,9 @@ public class LocationViewModel extends BaseViewModel {
         App.locationApiService.fetchLocation().enqueue(new Callback<RickAndMortyResponse<LocationModel>>() {
             @Override
             public void onResponse(Call<RickAndMortyResponse<LocationModel>> call, Response<RickAndMortyResponse<LocationModel>> response) {
-                data.setValue(response.body());
+                if (response.body() != null) {
+                    data.setValue(response.body());
+                }
             }
 
             @Override
